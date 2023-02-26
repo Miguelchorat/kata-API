@@ -1,9 +1,15 @@
 package com.example.katamodule.controller;
+import com.example.katamodule.error.ApiError;
+import com.example.katamodule.error.BeerNotFoundException;
 import com.example.katamodule.model.Beer;
 import com.example.katamodule.repos.BeerRepository;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -13,12 +19,18 @@ public class BeerController {
 
     @GetMapping("/beers")
     public List<Beer> obtenerTodos() {
-        return beerRepository.findAll();
+        List<Beer> result =  beerRepository.findAll();
+
+        if(result.isEmpty()){
+            throw new BeerNotFoundException();
+        }
+
+        return result;
     }
 
     @GetMapping("/beer/{id}")
     public Beer obtenerUno(@PathVariable Long id) {
-        return beerRepository.findById(id).orElse(null);
+        return beerRepository.findById(id).orElseThrow(() -> new BeerNotFoundException(id));
     }
     @PostMapping("/beer")
     public Beer newBeer(@RequestBody Beer newBeer){
@@ -32,7 +44,7 @@ public class BeerController {
             return beerRepository.save(updateBeer);
         }
         else{
-            return null;
+            throw new BeerNotFoundException(id);
         }
     }
 
@@ -43,6 +55,7 @@ public class BeerController {
             beerRepository.deleteById(id);
             return result;
         } else
-            return null;
+            throw new BeerNotFoundException(id);
     }
+
 }

@@ -1,5 +1,7 @@
 package com.example.katamodule.controller;
 
+import com.example.katamodule.error.BeerNotFoundException;
+import com.example.katamodule.error.BreweryNotFoundException;
 import com.example.katamodule.model.Brewery;
 import com.example.katamodule.repos.BreweryRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,16 +15,14 @@ public class BreweryController {
     private final BreweryRepository breweryRepository;
     @GetMapping("/breweries")
     public List<Brewery> obtenerTodos() {
-        return breweryRepository.findAll();
+        List<Brewery> result = breweryRepository.findAll();
+        if(result.isEmpty()){
+            throw new BreweryNotFoundException();
+        }
+        return result;
     }
-
     @GetMapping("/brewery/{id}")
     public Brewery obtenerUno(@PathVariable Long id) {
-        return breweryRepository.findById(id).orElse(null);
-    }
-
-    @PostMapping("/breweries")
-    public Brewery newBrewery(@RequestBody Brewery newBrewery) {
-        return breweryRepository.save(newBrewery);
+        return breweryRepository.findById(id).orElseThrow(() -> new BreweryNotFoundException(id));
     }
 }
