@@ -2,13 +2,16 @@
 > Si alguien quiere usar docker, docker-compose, adelante.
 > Pero ahora mismo no es nuestro objetivo.
 > Los objetivos son los que aparecen tras ### Objetivos del módulo
-
-
+  
 # Kata API
 Kata : crear una [API](https://github.com/OAI/OpenAPI-Specification)
 funcional [CRUD](https://www.codecademy.com/articles/what-is-crud) sobre
 varias tablas en MySQL.
+## Miembros del grupo de trabajo
 
+  - Miguel Angel Chorat ([Miguelchorat](https://github.com/Miguelchorat))
+  - Daniel Mera Sachse ([danielmera2912](https://github.com/danielmera2912))
+  
 ## Objetivo
 Creación y utilización de una API y aprender y usar diferentes [métodos
 HTTP](https://developer.mozilla.org/es/docs/Web/HTTP/Methods).
