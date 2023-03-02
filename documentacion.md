@@ -12,16 +12,15 @@ Este proyecto utiliza Spring Framework para crear un servidor RESTful que permit
 |`/beer/{id}`      | Mostrar la cerveza con el id `{id}`     | GET      |
 |`/beer/{id}`      | Eliminar una cerveza                    | DELETE   |
 |`/beer/{id}`      | Modificar una cerveza                   | PUT      |
-|`/beer/{id}`      | Modificar parcialmente una cerveza      | PATCH    |
 |`/breweries`      | Listar todas las cerveceras             | GET      |
 |`/brewerie/{id}`  | Mostrar la cervecera `{id}`             | GET      |
 |`/categories`     | Listar todas las categorías             | GET      |
 |`/categorie/{id}` | Mostrar la categoría `{id}`             | GET      |
-|`/styles`         | Listar todos los estilos -style-        | GET      |
-|`/style/{id}`     | Mostrar el estilo -style- `{id}`        | GET      |
+|`/styles`         | Listar todos los estilos                | GET      |
+|`/style/{id}`     | Mostrar el estilo `{id}`                | GET      |
 
 ## Controlador de Errores
-El controlador de errores se encarga de manejar cualquier error que se presente durante la ejecución del servidor, incluyendo errores HTTP. En caso de que se presente un error, el controlador de errores mostrará un mensaje descriptivo del error y devolverá un código de estado HTTP apropiado.
+El controlador de errores se encarga de manejar cualquier error que se presente durante la ejecución del servidor, incluyendo errores HTTP. En caso de que se presente un error, el controlador de errores mostrará un mensaje descriptivo del error, la fecha en la que se realizó y un código de estado HTTP apropiado.
 
 ## Software utilizado
 
